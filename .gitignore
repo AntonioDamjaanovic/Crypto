@@ -1,0 +1,56 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Xcode user-specific files
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+*.xcscheme.bak
+project.xcworkspace/xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# Build output
+build/
+DerivedData/
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+.swiftpm/
+# Uncomment if you are building a library and don't want to pin dependencies:
+# Package.resolved
+
+# CocoaPods (uncomment if you don't commit Pods)
+# Pods/
+
+# Carthage
+Carthage/Build/
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# User files
+Crypto/Other/Secrets.xcconfig
+*.secrets
+.env
+
+# Misc
+*.swp
+*~
+.idea/
+.vscode/
