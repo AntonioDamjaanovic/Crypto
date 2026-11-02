@@ -15,8 +15,8 @@ final class LiveCoinRepository: CoinRepository {
         self.api = api
     }
     
-    func fetchCoins(vsCurrency: String = "usd", page: Int = 1, perPage: Int = 50) -> AnyPublisher<[Coin], APIError> {
-        api.request(.markets(vsCurrency: vsCurrency, page: page, perPage: perPage), as: [Coin].self)
+    func fetchCoins(vsCurrency: String = "usd") -> AnyPublisher<[Coin], APIError> {
+        api.request(.markets(vsCurrency: vsCurrency), as: [Coin].self)
             .eraseToAnyPublisher()
     }
 }

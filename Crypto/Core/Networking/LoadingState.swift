@@ -7,24 +7,24 @@
 
 import Foundation
 
-enum LoadingState<T: Equatable>: Equatable {
+enum LoadingState: Equatable {
     case idle
     case loading
-    case loaded(T)
-    case error(String)
+    case loaded
+    case failed(String)
     
     var isLoading: Bool {
         if case .loading = self { return true }
         return false
     }
     
-    var data: T? {
-        if case .loaded(let value) = self { return value }
-        return nil
+    var data: Bool {
+        if case .loaded = self { return true }
+        return false
     }
     
-    var error: String? {
-        if case .error(let message) = self { return message }
+    var failed: String? {
+        if case .failed(let message) = self { return message }
         return nil
     }
 }

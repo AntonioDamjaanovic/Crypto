@@ -30,8 +30,8 @@ struct CoinRowView: View {
                     .foregroundStyle(.primary)
                     .font(.title3)
                 
-                Text(coin.priceChangePercentage24h / 100, format: .percent.precision(.fractionLength(2)))
-                    .foregroundStyle(coin.priceChangePercentage24h >= 0 ? .green : .pink)
+                Text(coin.priceChangePercentage24H / 100, format: .percent.precision(.fractionLength(2)))
+                    .foregroundStyle(coin.currentPrice >= 0 ? .green : .pink)
             }
         }
     }
