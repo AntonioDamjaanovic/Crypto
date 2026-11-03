@@ -8,7 +8,7 @@
 import Foundation
 
 enum Endpoint {
-    case markets(vsCurrency: String, page: Int = 1, perPage: Int = 50)
+    case markets(vsCurrency: String, page: Int, perPage: Int)
     case coinDetail(id: String)
     
     private var path: String {

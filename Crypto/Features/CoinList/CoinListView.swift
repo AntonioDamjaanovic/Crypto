@@ -60,10 +60,22 @@ private struct CoinList: View {
         .font(.subheadline)
         .padding(.horizontal, 30)
         
-        List(viewModel.coins) { coin in
-            NavigationLink(value: coin) {
-                CoinRowView(coin: coin)
-                    .padding(.vertical, 5)
+        List {
+            ForEach(viewModel.coins) { coin in
+                NavigationLink(value: coin) {
+                    CoinRowView(coin: coin)
+                        .padding(.vertical, 5)
+                }
+                .onAppear { viewModel.loadMoreIfNeeded(currentCoin: coin) }
+            }
+            
+            if viewModel.isLoadingMore {
+                HStack {
+                    Spacer()
+                    ProgressView()
+                    Spacer()
+                }
+                .listRowSeparator(.hidden)
             }
         }
         .listStyle(.inset)

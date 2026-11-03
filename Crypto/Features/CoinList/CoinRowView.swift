@@ -26,14 +26,31 @@ struct CoinRowView: View {
             Spacer()
             
             VStack {
-                Text("$\(coin.currentPrice.formatted())")
+                Text(coin.currentPrice.priceText())
                     .foregroundStyle(.primary)
                     .font(.title3)
+                    .monospacedDigit()
                 
-                Text(coin.priceChangePercentage24H / 100, format: .percent.precision(.fractionLength(2)))
-                    .foregroundStyle(coin.currentPrice >= 0 ? .green : .pink)
+                Text(coin.priceChange / 100, format: .percent.precision(.fractionLength(2)))
+                    .foregroundStyle(coin.priceChange >= 0 ? .green : .pink)
             }
         }
+    }
+}
+
+extension Double {
+    func priceText(currencyCode: String = "USD") -> String {
+        let digits: ClosedRange<Int>
+        switch abs(self) {
+            case 1000...: digits = 0...2
+            case 1...: digits = 2...2
+            case 0.01...: digits = 2...4
+            default: digits = 2...8
+        }
+        return self.formatted(
+            .currency(code: currencyCode)
+                .precision(.fractionLength(digits))
+        )
     }
 }
 

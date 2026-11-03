@@ -9,5 +9,5 @@ import Foundation
 import Combine
 
 protocol CoinRepository {
-    func fetchCoins(vsCurrency: String) -> AnyPublisher<[Coin], APIError>
+    func fetchCoins(vsCurrency: String, page: Int, perPage: Int) -> AnyPublisher<[Coin], APIError>
 }

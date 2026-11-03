@@ -15,8 +15,8 @@ final class LiveCoinRepository: CoinRepository {
         self.api = api
     }
     
-    func fetchCoins(vsCurrency: String = "usd") -> AnyPublisher<[Coin], APIError> {
-        api.request(.markets(vsCurrency: vsCurrency), as: [Coin].self)
+    func fetchCoins(vsCurrency: String = "usd", page: Int, perPage: Int) -> AnyPublisher<[Coin], APIError> {
+        api.request(.markets(vsCurrency: vsCurrency, page: page, perPage: perPage), as: [Coin].self)
             .eraseToAnyPublisher()
     }
 }
@@ -28,7 +28,7 @@ import Playgrounds
 
     var coins: [Coin] = []
     do {
-        for try await batch in repo.fetchCoins().values {
+        for try await batch in repo.fetchCoins(page: 1, perPage: 50).values {
             coins = batch
         }
     } catch {
